@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @post.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+
+<p>
+  <strong>Number of member:</strong>
+  <%= @post.number_of_member %>
+</p>
+
+<p>
+  <strong>Week in day:</strong>
+  <%= @post.week_in_day %>
+</p>
+
+<p>
+  <strong>Day in hour:</strong>
+  <%= @post.day_in_hour %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  number_of_member: 1
+  week_in_day: 1
+  day_in_hour: 1
+
+two:
+  name: MyString
+  description: MyText
+  number_of_member: 1
+  week_in_day: 1
+  day_in_hour: 1

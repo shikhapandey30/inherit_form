@@ -1,0 +1,79 @@
+<%= form_for(@person) do |f| %>
+  <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+      <ul>
+      <% @person.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <%= submit_tag "Add address", :type => 'button', :id => 'addAddress', :onclick => 'addAddressField()' %> 
+  <br>
+  <div id="addressHeader" style="display:none">Address information: </div>
+  <br>
+  <ul id="myList">
+  </ul>
+  <div class="actions">
+    <%= f.submit "Create Person and Addresses" %>
+  </div>
+<% end %>
+<script type="text/javascript">
+  function addAddressField() {
+
+        //create Date object
+        var date = new Date();
+
+        //get number of milliseconds since midnight Jan 1, 1970 and use it for id
+        var mSec = date.getTime(); 
+
+        // Replace 0 with milliseconds
+        idAttributKind =  "person_addresses_attributes_0_kind".replace("0", mSec);
+        nameAttributKind =  "person[addresses_attributes][0][kind]".replace("0", mSec);
+
+        idAttributStreet =  "person_addresses_attributes_0_street".replace("0", mSec);
+        nameAttributStreet =  "person[addresses_attributes][0][street]".replace("0", mSec);
+       
+        // <li> tag
+        var li = document.createElement("li");
+
+        //label for Kind
+        var labelKind = document.createElement("label");
+        labelKind.setAttribute("for", idAttributKind);
+        var kindLabelText = document.createTextNode("Kind");
+        labelKind.appendChild(kindLabelText);
+        li.appendChild(labelKind);
+
+        //input for Kind
+        var inputKind = document.createElement("INPUT");
+        inputKind.setAttribute("type", "text");
+        inputKind.setAttribute("id", idAttributKind);
+        inputKind.setAttribute("name", nameAttributKind);
+        li.appendChild(inputKind);
+
+        //label for Street
+        var labelStreet = document.createElement("label");
+        labelStreet.setAttribute("for", idAttributStreet);
+        var streetLabelText = document.createTextNode("Street");
+        labelStreet.appendChild(streetLabelText);
+        li.appendChild(labelStreet);
+
+        //input for Street
+        var inputStreet = document.createElement("INPUT");
+        inputStreet.setAttribute("type", "text");
+        inputStreet.setAttribute("id", idAttributStreet);
+        inputStreet.setAttribute("name", nameAttributStreet);
+        li.appendChild(inputStreet);
+
+        //add created elements to myList
+        document.getElementById("myList").appendChild(li);
+
+        //show address header
+        $("#addressHeader").show(); 
+}
+</script>
